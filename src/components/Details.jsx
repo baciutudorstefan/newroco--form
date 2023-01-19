@@ -4,7 +4,7 @@ import AppBar from 'material-ui/AppBar'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 
-export class FormDetails extends Component {
+export class Details extends Component {
 
     continue = e => {
         e.preventDefault ();
@@ -79,4 +79,4 @@ const styles= {
     }
 }
 
-export default FormDetails
+export default Details
