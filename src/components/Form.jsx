@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import FormDetails from './FormDetails';
+import Details from "./Details"
+
 export class Form extends Component {
 
 
@@ -27,10 +29,10 @@ export class Form extends Component {
    }
   
    //Mergi la pasul anterior
-  nextStep = () => {
+  prevStep = () => {
     const {step} =this.state;
     this.setState({
-      step: step + 1
+      step: step - 1
     })
   }
 
@@ -55,9 +57,16 @@ export class Form extends Component {
           />
         )
         case 2:
-          return <h1>FormPersonalDetails</h1>
+          return (
+            <Details
+              prevStep = {this.prevStep}
+              nextStep = {this.nextStep}
+              handleChange = {this.handleChange}
+              values={values}
+              />
+            )
         case 3:
-          return <h1>Confirmation</h1>
+          return <h1>Upload</h1>
         case 4:
           return <h1>Success</h1>
     }
