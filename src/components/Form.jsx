@@ -7,15 +7,12 @@ import Success from './Success';
 export class Form extends Component {
 
 
-
-
-
   state = {
     step: 1,
-    firstName: '',
+    recordType: '',
     lastName: '',
     email: '',
-    textArea: '',
+    uploadFile: '',
     bio: '',
     city: ''
 
@@ -46,8 +43,8 @@ export class Form extends Component {
   render() {
 
     const {step} = this.state;
-    const {firstName, lastName, email, textArea, bio, city} = this.state;
-    const values = {firstName, lastName, email, textArea, bio, city}
+    const {recordType, lastName, email, uploadFile, bio, city} = this.state;
+    const values = {recordType, lastName, email, uploadFile, bio, city}
 
     switch(step) {
       case 1 :

@@ -3,6 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
+import UploadFile from './UploadFile';
 
 export class Details extends Component {
 
@@ -26,11 +27,10 @@ export class Details extends Component {
         <React.Fragment>
 
             <AppBar title="Free Text"/>
-            <TextField 
-                hintText="Enter Free Text"
-                floatingLabelText="Free Text"
-                onChange={handleChange('textArea')}
+            <UploadFile 
+                onChange={handleChange('uploadFile')}
                 defaultValue={values.textArea}
+               
             />
             <br/>
 
@@ -39,6 +39,7 @@ export class Details extends Component {
                 floatingLabelText="L Name"
                 onChange={handleChange('bio')}
                 defaultValue={values.bio}
+                maxlength="255"
             />
 
             <br/>
