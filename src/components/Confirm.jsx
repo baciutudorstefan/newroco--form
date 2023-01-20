@@ -19,7 +19,7 @@ export class Confirm extends Component {
       }
 
   render() {
-    const {values:{firstName, lastName, email, textArea, bio, city}} = this.props;
+    const {values:{recordType, lastName, email, uploadFile, bio, city}} = this.props;
 
 
     return (
@@ -31,8 +31,8 @@ export class Confirm extends Component {
 
             <List>
                 <ListItem  
-                primaryText="First Name"
-                secondaryText={firstName}
+                primaryText="Record Type"
+                secondaryText={recordType}
                 />
             </List>
             <List>
@@ -49,8 +49,8 @@ export class Confirm extends Component {
             </List>
             <List>
                 <ListItem  
-                primaryText="Text Area"
-                secondaryText={textArea}
+                primaryText="uploadFile"
+                secondaryText={uploadFile}
                 />
             </List>
             <List>

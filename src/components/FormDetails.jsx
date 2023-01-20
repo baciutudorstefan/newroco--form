@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
-import TextField from 'material-ui/TextField'
+import FormControl from '@mui/material/FormControl';
 import RaisedButton from 'material-ui/RaisedButton'
+
+import FormLabel from '@mui/material/FormLabel'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Radio from '@mui/material/Radio';
+
 
 export class FormDetails extends Component {
 
@@ -13,7 +19,7 @@ export class FormDetails extends Component {
 
   render() {
     const {values, handleChange} = this.props;
-
+    
 
     return (
       <MuiThemeProvider>
@@ -21,29 +27,23 @@ export class FormDetails extends Component {
         <React.Fragment>
 
             <AppBar title="Enter Details"/>
-            <TextField 
-                hintText="Enter F Name"
-                floatingLabelText="F Name"
-                onChange={handleChange('firstName')}
-                defaultValue={values.firstName}
-            />
-            <br/>
+            
+         
 
-            <TextField 
-                hintText="Enter L Name"
-                floatingLabelText="L Name"
-                onChange={handleChange('lastName')}
-                defaultValue={values.lastName}
-            />
+            <FormControl>
+                <FormLabel id="demo-radio-buttons-group-label">Record type</FormLabel>
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  name="radio-buttons-group"
+                  onChange={handleChange('recordType')}
+                >
+                  <FormControlLabel value="Article" control={<Radio />} label="Article" />
+                  <FormControlLabel value="Client Report" control={<Radio />} label="Client Report" />
+                  <FormControlLabel value="Monograf" control={<Radio />} label="Monograf" />
+                </RadioGroup>
+              </FormControl>
 
-            <br/>
 
-            <TextField 
-                hintText="Enter Your EMAIL"
-                floatingLabelText="EMAIL"
-                onChange={handleChange('email')}
-                defaultValue={values.email}
-            />
 
             <br/>
             <RaisedButton
