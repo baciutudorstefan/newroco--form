@@ -18,7 +18,7 @@ export class Form extends Component {
   }
 
 
-  //Mergi la pasul urmator
+  //next step
   nextStep = () => {
     const {step} = this.state;
     this.setState({
@@ -26,7 +26,7 @@ export class Form extends Component {
     })
    }
   
-   //Mergi la pasul anterior
+   //previous step
   prevStep = () => {
     const {step} =this.state;
     this.setState({
@@ -34,7 +34,7 @@ export class Form extends Component {
     })
   }
 
-  
+  //
   handleChange = input => e => {
     this.setState({[input]: e.target.value});
   }

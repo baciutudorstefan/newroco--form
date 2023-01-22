@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
-import RaisedButton from 'material-ui/RaisedButton'
+import Button from '@mui/material/Button';
 import UploadFile from './UploadFile';
 
 export class UploadComp extends Component {
@@ -28,23 +28,23 @@ export class UploadComp extends Component {
             <AppBar title="Upload"/>
 
             <UploadFile 
-                onChange={handleChange('uploadFile')}
+              onChange={handleChange('uploadFile')}
+              defaultValue={values.uploadFile}
 
             />
             
             <br/>
-            <RaisedButton
-            label="Prev"
-            primary={true}
+            <Button
+            variant="outlined"
             style={styles.button}
             onClick={this.back}
-            />
-            <RaisedButton
-            label="Continue"
-            primary={false}
+            >Previous
+            </Button>
+             <Button
+            variant="outlined"
             style={styles.button}
             onClick={this.continue}
-            />
+            >Continue</Button>
            
             
         </React.Fragment>  

@@ -2,7 +2,7 @@ import React, { Component, useSate } from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
 import FormControl from '@mui/material/FormControl';
-import RaisedButton from 'material-ui/RaisedButton'
+import Button from '@mui/material/Button';
 
 import FormLabel from '@mui/material/FormLabel'
 import RadioGroup from '@mui/material/RadioGroup'
@@ -29,56 +29,34 @@ export class FormDetails extends Component {
             <AppBar title="Type"/> 
           
 
-            {/* <FormControl>
+            <FormControl>
                 <FormLabel id="demo-radio-buttons-group-label">Record type</FormLabel>
                 <RadioGroup
                   aria-labelledby="demo-radio-buttons-group-label"
                   name="radio-buttons-group"
-                  // defaultValue="Article"
-                  onChange={handleChange('recordType').bind(this)}
+                  defaultValue="Article"
+                  onChange={handleChange('recordType')}
                 >
-                  <FormControlLabel control={<Radio value="article" name="radioBtn" onChange={handleChange}/>} label="Article" />
-                  <FormControlLabel control={<Radio value="report" name="radioBtn" onChange={handleChange}/>} label="Client Report" />
-                  <FormControlLabel control={<Radio value="monograf" name="radioBtn" onChange={handleChange}/>} label="Monograf" />
+                  <FormControlLabel onChange={handleChange} control={<Radio value="Article" name="radioBtn" />} label="Article" />
+                  <FormControlLabel onChange={handleChange} control={<Radio value="Report" name="radioBtn" />} label="Client Report" />
+                  <FormControlLabel onChange={handleChange} control={<Radio value="Monograf" name="radioBtn" />} label="Monograf" />
                 </RadioGroup>
 
                 
-              </FormControl> */}
+              </FormControl>
 
-              <form 
-              onChange={handleChange('recordType').bind(this)}
-              >
-                <div className="radio">
-                  <label>
-                    <input value="article" name="radioBtn"  type="radio" checked={handleChange === 'article'} defaultChecked={true}/>
-                    Article
-                  </label>
-                </div>
-                <div className="radio">
-                  <label>
-                    <input value="report" name="radioBtn"  type="radio" checked={handleChange === 'report'} />
-                    Client Report
-                  </label>
-                </div>
-                <div className="radio">
-                  <label>
-                    <input value="monograf" name="radioBtn"  type="radio"  checked={handleChange === 'monograf'} />
-                    Monograf
-                  </label>
-                </div>
-              </form>
+             
 
 
 
 
 
             <br/>
-            <RaisedButton
-            label="Continue"
-            primary={true}
+            <Button
+            variant="outlined"
             style={styles.button}
             onClick={this.continue}
-            />
+            >Continue</Button>
            
             
         </React.Fragment>  
