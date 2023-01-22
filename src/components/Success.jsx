@@ -1,21 +1,11 @@
 import React, { Component } from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
+import App from '../App'
 
 export class Success extends Component {
 
-    continue = e => {
-        e.preventDefault ();
-        //Trimite Datele la API//
-
-        this.props.nextStep();
-      }
-    
-      back = e => {
-        e.preventDefault ();
-        this.props.prevStep();
-      }
-
+  
   render() {
 
 
@@ -29,7 +19,7 @@ export class Success extends Component {
            <h1>Thank you for your submission</h1>
            <p>You will receive an email with further instructions</p>
            
-            
+            <App/>
         </React.Fragment>  
 
       </MuiThemeProvider>
