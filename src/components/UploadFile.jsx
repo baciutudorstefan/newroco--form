@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./UploadFile.css";
 import { Line } from "rc-progress";
 import Upload from "rc-upload";
+import Button from '@mui/material/Button';
+import UploadFileIcon from '@mui/icons-material/UploadFile';
 
 export default function App() {
   const [percentage, setPercentage] = useState(0);
@@ -13,20 +15,16 @@ export default function App() {
     action: "https://httpbin.org/post",
     accept: ".pdf, .doc, .docx",
     beforeUpload(file) {
-      // Start upload
       setIsUploading(true);
-      // Set file details
       setFileName(file.name);
       setFileSize(Math.floor(file.size / 1000));
       // Display file
       
     },
     onSuccess() {
-      // Finish upload
       setIsUploading(false);
     },
     onProgress(step) {
-      // Update progress
       setPercentage(Math.round(step.percent));
     },
     onError(err) {
@@ -34,8 +32,9 @@ export default function App() {
     }
   };
 
+
   return (
-    <div className="App">
+    <div className="uploadF">
       {fileName && (
         <React.Fragment>
         
@@ -61,7 +60,7 @@ export default function App() {
         </React.Fragment>
       )}
       <Upload {...props}>
-        <button id="upload-button">Upload File</button>
+        <Button variant="outlined" id="upload-button" endIcon={<UploadFileIcon/>}>Upload File</Button>
       </Upload>
     </div>
   );

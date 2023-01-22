@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
 import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
 import { TextareaAutosize } from '@mui/base';
+import Button from '@mui/material/Button';
 
 export class Details extends Component {
 
@@ -23,47 +23,44 @@ export class Details extends Component {
 
     return (
       <MuiThemeProvider>
-
         <React.Fragment>
-
             <AppBar title="Details"/>
-
-            
-
             <TextField 
                 hintText="Title"
                 floatingLabelText="Title"
                 onChange={handleChange('title')}
                 defaultValue={values.title}
                 maxLength="10"
+                style={{width: 300}}
+
             />
 
             <br/>
 
+            <h3>Abstract</h3>
             <TextareaAutosize 
-                aria-label="Abstract"
+                label="Abstract"
                 placeholder="Abstract"
+                style={{width: 300}}
                 minRows={4}
                 maxRows={10}
                 maxLength="100"
-                defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                defaultValue="Lorem ipsum "
                 onChange={handleChange('abstract')}
             />
 
             <br/>
-            <RaisedButton
-            label="Prev"
-            primary={true}
+            <Button
+            variant="outlined"
             style={styles.button}
             onClick={this.back}
-          
-            />
-            <RaisedButton
-            label="Continue"
-            primary={false}
+            >Previous
+            </Button>
+             <Button
+            variant="outlined"
             style={styles.button}
             onClick={this.continue}
-            />
+            >Continue</Button>
            
             
         </React.Fragment>  

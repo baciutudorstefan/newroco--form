@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
 import {List, ListItem} from 'material-ui/List'
-import RaisedButton from 'material-ui/RaisedButton'
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
 
 export class Confirm extends Component {
 
@@ -13,11 +14,11 @@ export class Confirm extends Component {
       }
 
   render() {
-    const {values:{recordType, lastName, email, uploadFile, title, abstract}} = this.props;
+    const {values:{recordType, uploadFile, title, abstract}} = this.props;
     
 
     function handleForm() {
-        const formData = {recordType, lastName, email, uploadFile, title, abstract}
+        const formData = {recordType, uploadFile, title, abstract}
 
         // Send data to the backend via POST
         fetch('https://httpbin.org/post', {  
@@ -27,10 +28,13 @@ export class Confirm extends Component {
           body: JSON.stringify(formData) 
     
         }).then(() => {
-            console.log('Form sent')
-        })
+            const successRequest = 
+            alert('Success, see console!')
+            console.log(formData)
+        }).catch(err => err)
         
       }
+
 
     return (
       <MuiThemeProvider>
@@ -38,7 +42,21 @@ export class Confirm extends Component {
         <React.Fragment>
 
             <AppBar title="Confirm"/>
-           
+
+            <List>
+                <ListItem  
+                primaryText="Title"
+                secondaryText={title}
+                />
+            </List>
+
+            <List>
+                <ListItem  
+                primaryText="Abstract"
+                secondaryText={abstract}
+                />
+            </List>
+            
             <List>
                 <ListItem  
                 primaryText="Record Type"
@@ -48,36 +66,27 @@ export class Confirm extends Component {
             
             <List>
                 <ListItem  
-                primaryText="uploadFile"
+                primaryText="Document"
                 secondaryText={uploadFile}
                 />
             </List>
-            <List>
-                <ListItem  
-                primaryText="title"
-                secondaryText={title}
-                />
-            </List>
-            <List>
-                <ListItem  
-                primaryText="Abstract"
-                secondaryText={abstract}
-                />
-            </List>
+            
+            
+
 
             <br/>
-            <RaisedButton
-            label="Prev"
-            primary={true}
+            <Button
+            variant="outlined"
             style={styles.button}
             onClick={this.back}
-            />
-            <RaisedButton
-            label="Confirm & Continue"
-            primary={false}
+            >Previous
+            </Button>
+            <Button
+            variant="outlined"
             style={styles.button}
             onClick={handleForm}
-            />
+            endIcon={<SendIcon/>}
+            >Send</Button>
            
         </React.Fragment>  
 
@@ -85,7 +94,6 @@ export class Confirm extends Component {
     )
   }
 }
-
 
 const styles= {
     button: {
