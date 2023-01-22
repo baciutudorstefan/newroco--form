@@ -5,7 +5,6 @@ import Upload from "rc-upload";
 
 export default function App() {
   const [percentage, setPercentage] = useState(0);
-  const [imgData, setImgdata] = useState();
   const [isUploading, setIsUploading] = useState(false);
   const [fileName, setFileName] = useState();
   const [fileSize, setFileSize] = useState();
@@ -19,14 +18,8 @@ export default function App() {
       // Set file details
       setFileName(file.name);
       setFileSize(Math.floor(file.size / 1000));
-      // Display image for .png format
-      if (file.type === "image/png") {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          setImgdata(reader.result);
-        };
-        reader.readAsDataURL(file);
-      }
+      // Display file
+      
     },
     onSuccess() {
       // Finish upload
@@ -45,11 +38,7 @@ export default function App() {
     <div className="App">
       {fileName && (
         <React.Fragment>
-          {imgData && (
-            <div>
-              <img src={imgData} alt="uploaded" width="250" />
-            </div>
-          )}
+        
           <div className="upload-list">
             <div className="file-name">
               <b>{fileName}</b>
@@ -61,6 +50,7 @@ export default function App() {
                 trailWidth={9}
                 trailColor="#FFF"
                 strokeColor={isUploading ? "#41C3D2" : "#92ed14"}
+                
               />
               <div className="progress-text">
                 {isUploading ? `Uploading ${percentage}% ` : `Finished`}

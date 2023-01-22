@@ -6,12 +6,6 @@ import RaisedButton from 'material-ui/RaisedButton'
 
 export class Confirm extends Component {
 
-    continue = e => {
-        e.preventDefault ();
-        //Trimite Datele la API//
-
-        this.props.nextStep();
-      }
     
       back = e => {
         e.preventDefault ();
@@ -19,8 +13,24 @@ export class Confirm extends Component {
       }
 
   render() {
-    const {values:{recordType, lastName, email, uploadFile, bio, city}} = this.props;
+    const {values:{recordType, lastName, email, uploadFile, title, abstract}} = this.props;
+    
 
+    function handleForm() {
+        const formData = {recordType, lastName, email, uploadFile, title, abstract}
+
+        // Send data to the backend via POST
+        fetch('https://httpbin.org/post', {  
+    
+          method: 'POST', 
+          mode: 'cors', 
+          body: JSON.stringify(formData) 
+    
+        }).then(() => {
+            console.log('Form sent')
+        })
+        
+      }
 
     return (
       <MuiThemeProvider>
@@ -28,25 +38,14 @@ export class Confirm extends Component {
         <React.Fragment>
 
             <AppBar title="Confirm"/>
-
+           
             <List>
                 <ListItem  
                 primaryText="Record Type"
                 secondaryText={recordType}
                 />
             </List>
-            <List>
-                <ListItem  
-                primaryText="Last Name"
-                secondaryText={lastName}
-                />
-            </List>
-            <List>
-                <ListItem  
-                primaryText="Email"
-                secondaryText={email}
-                />
-            </List>
+            
             <List>
                 <ListItem  
                 primaryText="uploadFile"
@@ -55,14 +54,14 @@ export class Confirm extends Component {
             </List>
             <List>
                 <ListItem  
-                primaryText="Bio"
-                secondaryText={bio}
+                primaryText="title"
+                secondaryText={title}
                 />
             </List>
             <List>
                 <ListItem  
-                primaryText="City"
-                secondaryText={city}
+                primaryText="Abstract"
+                secondaryText={abstract}
                 />
             </List>
 
@@ -77,10 +76,9 @@ export class Confirm extends Component {
             label="Confirm & Continue"
             primary={false}
             style={styles.button}
-            onClick={this.continue}
+            onClick={handleForm}
             />
            
-            
         </React.Fragment>  
 
       </MuiThemeProvider>

@@ -3,6 +3,7 @@ import FormDetails from './FormDetails';
 import Details from "./Details"
 import Confirm from "./Confirm"
 import Success from './Success';
+import UploadComp from './UploadComp';
 
 export class Form extends Component {
 
@@ -10,18 +11,16 @@ export class Form extends Component {
   state = {
     step: 1,
     recordType: '',
-    lastName: '',
-    email: '',
     uploadFile: '',
-    bio: '',
-    city: ''
+    title: '',
+    abstract: ''
 
   }
 
 
   //Mergi la pasul urmator
   nextStep = () => {
-    const {step} =this.state;
+    const {step} = this.state;
     this.setState({
       step: step + 1
     })
@@ -35,16 +34,17 @@ export class Form extends Component {
     })
   }
 
-  //
+  
   handleChange = input => e => {
     this.setState({[input]: e.target.value});
   }
 
+
   render() {
 
     const {step} = this.state;
-    const {recordType, lastName, email, uploadFile, bio, city} = this.state;
-    const values = {recordType, lastName, email, uploadFile, bio, city}
+    const {recordType, uploadFile, title, abstract} = this.state;
+    const values = {recordType, uploadFile, title, abstract}
 
     switch(step) {
       case 1 :
@@ -55,7 +55,7 @@ export class Form extends Component {
           values={values}
           />
         )
-        case 2:
+      case 2:
           return (
             <Details
               prevStep = {this.prevStep}
@@ -64,18 +64,26 @@ export class Form extends Component {
               values={values}
               />
             )
-        case 3:
+      case 3:
           return (
-            <Confirm
+            <UploadComp
             prevStep = {this.prevStep}
             nextStep = {this.nextStep}
+            handleChange = {this.handleChange}
             values={values}
             />
             )
-        case 4:
+      case 4:
           return (
-            <Success/>
+            <Confirm
+            prevStep = {this.prevStep}
+            values={values}
+            />
             )
+      // case 5:
+      //     return (
+      //       <Success/>
+      //       )
     }
 
     return (

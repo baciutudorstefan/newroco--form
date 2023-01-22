@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useSate } from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
 import FormControl from '@mui/material/FormControl';
@@ -17,31 +17,58 @@ export class FormDetails extends Component {
         this.props.nextStep();
       }
 
+
   render() {
     const {values, handleChange} = this.props;
-    
 
     return (
       <MuiThemeProvider>
 
         <React.Fragment>
 
-            <AppBar title="Enter Details"/>
-            
-         
+            <AppBar title="Type"/> 
+          
 
-            <FormControl>
+            {/* <FormControl>
                 <FormLabel id="demo-radio-buttons-group-label">Record type</FormLabel>
                 <RadioGroup
                   aria-labelledby="demo-radio-buttons-group-label"
                   name="radio-buttons-group"
-                  onChange={handleChange('recordType')}
+                  // defaultValue="Article"
+                  onChange={handleChange('recordType').bind(this)}
                 >
-                  <FormControlLabel value="Article" control={<Radio />} label="Article" />
-                  <FormControlLabel value="Client Report" control={<Radio />} label="Client Report" />
-                  <FormControlLabel value="Monograf" control={<Radio />} label="Monograf" />
+                  <FormControlLabel control={<Radio value="article" name="radioBtn" onChange={handleChange}/>} label="Article" />
+                  <FormControlLabel control={<Radio value="report" name="radioBtn" onChange={handleChange}/>} label="Client Report" />
+                  <FormControlLabel control={<Radio value="monograf" name="radioBtn" onChange={handleChange}/>} label="Monograf" />
                 </RadioGroup>
-              </FormControl>
+
+                
+              </FormControl> */}
+
+              <form 
+              onChange={handleChange('recordType').bind(this)}
+              >
+                <div className="radio">
+                  <label>
+                    <input value="article" name="radioBtn"  type="radio" checked={handleChange === 'article'} defaultChecked={true}/>
+                    Article
+                  </label>
+                </div>
+                <div className="radio">
+                  <label>
+                    <input value="report" name="radioBtn"  type="radio" checked={handleChange === 'report'} />
+                    Client Report
+                  </label>
+                </div>
+                <div className="radio">
+                  <label>
+                    <input value="monograf" name="radioBtn"  type="radio"  checked={handleChange === 'monograf'} />
+                    Monograf
+                  </label>
+                </div>
+              </form>
+
+
 
 
 

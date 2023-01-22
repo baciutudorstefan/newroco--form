@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
-import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
-import { TextareaAutosize } from '@mui/base';
+import UploadFile from './UploadFile';
 
-export class Details extends Component {
+export class UploadComp extends Component {
 
     continue = e => {
         e.preventDefault ();
@@ -26,37 +25,19 @@ export class Details extends Component {
 
         <React.Fragment>
 
-            <AppBar title="Details"/>
+            <AppBar title="Upload"/>
 
+            <UploadFile 
+                onChange={handleChange('uploadFile')}
+
+            />
             
-
-            <TextField 
-                hintText="Title"
-                floatingLabelText="Title"
-                onChange={handleChange('title')}
-                defaultValue={values.title}
-                maxLength="10"
-            />
-
-            <br/>
-
-            <TextareaAutosize 
-                aria-label="Abstract"
-                placeholder="Abstract"
-                minRows={4}
-                maxRows={10}
-                maxLength="100"
-                defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                onChange={handleChange('abstract')}
-            />
-
             <br/>
             <RaisedButton
             label="Prev"
             primary={true}
             style={styles.button}
             onClick={this.back}
-          
             />
             <RaisedButton
             label="Continue"
@@ -80,4 +61,4 @@ const styles= {
     }
 }
 
-export default Details
+export default UploadComp
