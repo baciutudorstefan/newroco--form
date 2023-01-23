@@ -6,21 +6,16 @@ import { TextareaAutosize } from '@mui/base';
 import Button from '@mui/material/Button';
 
 export class Details extends Component {
-
     continue = e => {
         e.preventDefault ();
         this.props.nextStep();
       }
-    
       back = e => {
         e.preventDefault ();
         this.props.prevStep();
       }
-
   render() {
     const {values, handleChange} = this.props;
-
-
     return (
       <MuiThemeProvider>
         <React.Fragment>
@@ -32,11 +27,8 @@ export class Details extends Component {
                 defaultValue={values.title}
                 maxLength="10"
                 style={{width: 300}}
-
             />
-
             <br/>
-
             <h3>Abstract</h3>
             <TextareaAutosize 
                 label="Abstract"
@@ -48,7 +40,6 @@ export class Details extends Component {
                 defaultValue="Lorem ipsum "
                 onChange={handleChange('abstract')}
             />
-
             <br/>
             <Button
             variant="outlined"
@@ -57,14 +48,11 @@ export class Details extends Component {
             >Previous
             </Button>
              <Button
-            variant="outlined"
+            variant="contained"
             style={styles.button}
             onClick={this.continue}
             >Continue</Button>
-           
-            
         </React.Fragment>  
-
       </MuiThemeProvider>
     )
   }

@@ -17,9 +17,7 @@ export default function App() {
     beforeUpload(file) {
       setIsUploading(true);
       setFileName(file.name);
-      setFileSize(Math.floor(file.size / 1000));
-      // Display file
-      
+      setFileSize(Math.floor(file.size / 1000));      
     },
     onSuccess() {
       setIsUploading(false);
@@ -31,7 +29,6 @@ export default function App() {
       console.log("onError", err);
     }
   };
-
 
   return (
     <div className="uploadF">
