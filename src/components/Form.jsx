@@ -2,12 +2,9 @@ import React, { Component } from 'react'
 import FormDetails from './FormDetails';
 import Details from "./Details"
 import Confirm from "./Confirm"
-import Success from './Success';
 import UploadComp from './UploadComp';
 
 export class Form extends Component {
-
-
   state = {
     step: 1,
     recordType: '',
@@ -16,8 +13,6 @@ export class Form extends Component {
     abstract: ''
 
   }
-
-
   //next step
   nextStep = () => {
     const {step} = this.state;
@@ -25,7 +20,6 @@ export class Form extends Component {
       step: step + 1
     })
    }
-  
    //previous step
   prevStep = () => {
     const {step} =this.state;
@@ -33,15 +27,11 @@ export class Form extends Component {
       step: step - 1
     })
   }
-
-  //
   handleChange = input => e => {
     this.setState({[input]: e.target.value});
   }
 
-
   render() {
-
     const {step} = this.state;
     const {recordType, uploadFile, title, abstract} = this.state;
     const values = {recordType, uploadFile, title, abstract}
@@ -80,10 +70,6 @@ export class Form extends Component {
             values={values}
             />
             )
-      // case 5:
-      //     return (
-      //       <Success/>
-      //       )
     }
 
     return (

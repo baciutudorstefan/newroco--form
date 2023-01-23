@@ -18,21 +18,14 @@ export class UploadComp extends Component {
 
   render() {
     const {values, handleChange} = this.props;
-
-
     return (
       <MuiThemeProvider>
-
         <React.Fragment>
-
             <AppBar title="Upload"/>
-
             <UploadFile 
               onChange={handleChange('uploadFile')}
               defaultValue={values.uploadFile}
-
             />
-            
             <br/>
             <Button
             variant="outlined"
@@ -41,14 +34,11 @@ export class UploadComp extends Component {
             >Previous
             </Button>
              <Button
-            variant="outlined"
+            variant="contained"
             style={styles.button}
             onClick={this.continue}
             >Continue</Button>
-           
-            
         </React.Fragment>  
-
       </MuiThemeProvider>
     )
   }
